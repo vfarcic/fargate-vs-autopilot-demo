@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: dt-daemonset
+  labels:
+    app: devops-toolkit
+spec:
+  selector:
+    matchLabels:
+      app: devops-toolkit
+  template:
+    metadata:
+      labels:
+        app: devops-toolkit
+    spec:
+      containers:
+      - name: devops-toolkit
+        image: vfarcic/devops-toolkit-series
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 2Gi
+          requests:
+            cpu: 500m
+            memory: 1Gi
+

@@ -1,0 +1,18 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+  name: devops-catalog
+  region: us-east-2
+  version: "1.18"
+fargateProfiles:
+  - name: default
+    selectors:
+      - namespace: default
+      - namespace: kube-system
+      - namespace: argocd
+  - name: dev
+    selectors:
+    - namespace: dev
+      labels:
+        env: dev
+        checks: passed
